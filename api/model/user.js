@@ -3,20 +3,21 @@ const { hash, compare, hashSync } = require("bcrypt");
 const { createToken } = require("../middleware/authentication");
 
 class Users {
-  fetchUsers(req, res) {
-    const query = `
-        SELECT userID, firstName, lastNmae,userAge, gender,userRole,
-        emailAdd, profileUrl
-        FROM Users;
+    fetchUsers(req, res) {
+        const query = `
+            SELECT userID, firstName, lastName, userAge, gender, userRole,
+            emailAdd, userPass, profileUrl
+            FROM Users;
         `;
-    db.query(query, (err, results) => {
-      if (err) throw err;
-      res.json({
-        status: res.stausCode,
-        results,
-      });
-    });
-  }
+        db.query(query, (err, results) => {
+          if (err) throw err;
+          res.json({
+            status: res.statusCode, // Corrected typo here
+            results,
+          });
+        });
+      }
+      
   fetchUser(req, res) {
     const query = `
         SELECT userID, firstName, lastNmae,userAge, gender,userRole,

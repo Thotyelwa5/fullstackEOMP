@@ -41,7 +41,8 @@ class Users {
     
     const user = {
       emailAdd: data.emailAdd,
-      userPass: data.userPass,
+      userPass
+      : data.userPass,
     };
     //query
     const query = `

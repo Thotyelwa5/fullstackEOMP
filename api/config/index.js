@@ -8,4 +8,4 @@ const connection = createPool({
     multipleStatements: true,
     connectionLimit:30
 })
-module.exports = connection
+module.exports = connection;

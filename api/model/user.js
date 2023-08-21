@@ -59,16 +59,15 @@ class Users {
   }
   login(req, res) {
     const { emailAdd, userPass } = req.body;
-
-    // Use parameterized query
+  
     const query = `
-        SELECT userID, firstName, lastNmae,userAge, gender,userRole,
-        emailAdd, profileUrl
-        FROM Users
-        WHERE emailAdd = '${emailAdd}';
-        `;
-
-    db.query(query, async (err, result) => {
+      SELECT userID, firstName, lastName, userAge, gender, userRole,
+      emailAdd, profileUrl, userPass
+      FROM Users
+      WHERE emailAdd = ?;
+    `;
+  
+    db.query(query, [emailAdd], async (err, result) => {
       if (err) throw err;
       if (!result?.length) {
         res.json({
@@ -99,6 +98,7 @@ class Users {
       }
     });
   }
+  
 
   updateUser(req, res) {
     const data = req.body;
@@ -106,11 +106,11 @@ class Users {
       data.userPass = hashSync(data.userPass, 15);
     }
     const query = `
-        UPDATE User
+        UPDATE Users
         SET ?
         WHERE userID = ?
         `;
-    db.query(query, [req.body, req.params.id], (err) => {
+    db.query(query, [data, req.params.id], (err) => {
       if (err) throw err;
       res.json({
         status: res.statusCode,
@@ -118,17 +118,17 @@ class Users {
       });
     });
   }
+  
   deleteUser(req, res) {
-    const query = ` DELETE FROM Users 
-        WHERE userID = ${req.params.id};
-        `;
-    db.query(query, (err) => {
+    const query = `DELETE FROM Users
+        WHERE userID = ?`;
+    db.query(query, [req.params.id], (err) => {
       if (err) throw err;
       res.json({
         status: res.statusCode,
-        msg: "A user recored was deleted.",
+        msg: "A user record was deleted.",
       });
     });
-  }
+  }  
 }
 module.exports = Users;

@@ -5,7 +5,7 @@ const {createToken} = require('../middleware/authentication')
 class Users{
     fetchUsers(req, res){
         const query = `
-        SELECT userID, firstName, lastNmae, gender, userDOB,
+        SELECT userID, firstName, lastNmae,userAge, gender,userRole,
         emailAdd, profileUrl
         FROM Users;
         `
@@ -19,7 +19,7 @@ class Users{
     }
     fetchUser(req, res){
         const query = `
-        SELECT userID, firstName, lastNmae, gendeR, userDOB,
+        SELECT userID, firstName, lastNmae,userAge, gender,userRole,
         emailAdd, profileUrl
         FROM Users
         WHERE userId = ${req.params.id};
@@ -64,9 +64,8 @@ class Users{
         
         // Use parameterized query
         const query = `
-        SELECT firstName, lastName,
-        gender, userDOB, emailAdd, userPass,
-        profileUrl
+        SELECT userID, firstName, lastNmae,userAge, gender,userRole,
+        emailAdd, profileUrl
         FROM Users
         WHERE emailAdd = '${emailAdd}';
         `;

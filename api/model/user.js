@@ -1,4 +1,4 @@
-const db = require("../config"); //this imprt the db con from config
+const db = require("../config"); 
 const { hash, compare, hashSync } = require("bcrypt");
 const { createToken } = require("../middleware/authentication");
 
@@ -12,7 +12,7 @@ class Users {
         db.query(query, (err, results) => {
           if (err) throw err;
           res.json({
-            status: res.statusCode, // Corrected typo here
+            status: res.statusCode, 
             results,
           });
         });

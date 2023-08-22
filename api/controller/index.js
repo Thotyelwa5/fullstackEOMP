@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const {verifyAToken} = require('../middleware/authentication')
 const routes = express.Router()
 //Import all model's objects
-const {users} = require('../model')
+const {users, product} = require('../model')
 //User's router
 routes.get('/users', (req, res)=>{
     users.fetchUsers(req, res)
@@ -30,48 +30,48 @@ routes.post('/login',
 bodyParser.json(), (req, res)=>{
     users.login(req, res)
 })
-//products router
 
+//products router
 routes.get('/products', (req, res) => {
-    products.getProducts(req, res)
+    product.getProducts(req, res)
 })
 // Get a single product route
 routes.get('/products/:id', (req, res) => {
-    products.getProduct(req, res)
+    product.getProduct(req, res)
 })
 // Add a product route
 routes.post('/add-product', bodyParser.json(), (req, res) => {
-    products.addProduct(req, res)
+    product.addProduct(req, res)
 })
 // Update a single route route
 routes.put('/products/:id', bodyParser.json(), (req, res) => {
-    products.updateProduct(req, res)
+    product.updateProduct(req, res)
 })
 routes.get('/products', (req, res) => {
-    products.getProducts(req, res)
+    product.getProducts(req, res)
 })
 // Get a single product route
 routes.get('/products/:id', (req, res) => {
-    products.getProduct(req, res)
+    product.getProduct(req, res)
 })
 // Add a product route
 routes.post('/add-product', bodyParser.json(), (req, res) => {
-    products.addProduct(req, res)
+    product.addProduct(req, res)
 })
 // Update a single route route
 routes.put('/products/:id', bodyParser.json(), (req, res) => {
-    products.updateProduct(req, res)
+    product.updateProduct(req, res)
 })
 routes.patch('/products/:id', bodyParser.json(), (req, res) => {
-    products.updateProduct(req, res)
+    product.updateProduct(req, res)
 })
 // Delete a product route
 routes.delete('/products/:id', (req, res) => {
-    products.deleteProduct(req, res)
+    product.deleteProduct(req, res)
 })
 // Delete a product route
 routes.delete('/products/:id', (req, res) => {
-    products.deleteProduct(req, res)
+    product.deleteProduct(req, res)
 })
 module.exports = {
     express,

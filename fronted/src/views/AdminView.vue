@@ -71,7 +71,7 @@ export default {
     async addProduct() {
       try {
         const response = await axios.post('https://fullstackeomp1.onrender.com/add-product', this.newProduct);
-        alert(response.data.msg); // Assuming the response has a 'msg' property
+        alert(response.data.msg); 
         this.newProduct = {
           prodName: "",
           quantity: 0,
@@ -85,22 +85,32 @@ export default {
       }
     },
     async editProduct(product) {
-      try {
-        const updatedData = {
-          prodName: this.newProduct.prodName,
-          quantity: this.newProduct.quantity,
-          amount: this.newProduct.amount,
-          Category: this.newProduct.Category,
-          prodUrl: this.newProduct.prodUrl,
-        };
-        
-        await axios.patch(`https://fullstackeomp1.onrender.com/${product.prodID}`, updatedData);
-        this.fetchProducts();
-        alert('Product updated successfully');
-      } catch (error) {
-        console.error("Error editing product:", error);
-      }
-    },
+  try {
+    const updatedData = {
+      prodName: product.prodName,
+      quantity: product.quantity,
+      amount: product.amount,
+      Category: product.Category,
+      prodUrl: product.prodUrl,
+    };
+    
+    const response = await axios.put(`${fullStackEOMPUrl}products/id${product.prodID}`, updatedData);
+
+    if (response.status !== 200) {
+      throw new Error(`Failed to edit product. Status: ${response.status}`);
+    }
+
+    this.$store.dispatch('fetchProducts');
+    alert('Product updated successfully');
+  } catch (error) {
+    console.error("Error editing product:", error);
+
+    if (error.response) {
+      console.log("Response status:", error.response.status);
+      console.log("Response data:", error.response.data);
+    }
+  }
+},
     async deleteProduct(productId) {
     const confirmed = confirm("Are you sure you want to delete this product?");
       if (confirmed) {
@@ -109,7 +119,6 @@ export default {
           console.log("Product deleted successfully!");
         } catch (error) {
         console.error("Error deleting product:", error);
-        // Handle the error if needed
         }
       }
       this.$router.push("/admin");

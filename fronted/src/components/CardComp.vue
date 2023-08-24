@@ -9,7 +9,7 @@
                 Amount: {{ product.amount }}<br>
                 Category: {{ product.Category }}<br>
               </p>
-              <router-link :to="{name: 'product', params: {prodID: product.prodID}}">Go somewhere</router-link>
+              <router-link :to="{name: 'product', params: {prodID: product.prodID}}">View More</router-link>
             </div>
           </div>
     </div>

@@ -30,7 +30,6 @@ app.use((req, res, next) => {
   // Handling all errors
   app.use(ErrorHandling);
   // Server
-
 routes.get('^/$|/challenger',(req, res)=>{
     res.sendFile(path.resolve(__dirname,
         "./static/html/index.html"))

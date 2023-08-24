@@ -1,7 +1,13 @@
 <template>
+ <div>
   <div>
-    <CardComp :products="products"/>
+
   </div>
+  <CardComp :products="products"/>
+ </div>
+
+    
+ 
 </template>
 
 <script>
@@ -23,5 +29,6 @@ export default {
 </script>
 
 <style scoped>
+
 
 </style>

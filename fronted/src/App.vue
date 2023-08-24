@@ -20,6 +20,7 @@ export default {
   text-align: center;
   background-color: #2c3e50;
   color:white;
+  overflow: hidden;
 }
 
 nav {

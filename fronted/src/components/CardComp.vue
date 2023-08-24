@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div v-for="product in products" :key="product.prodID" class="card" style="width: 18rem;">
+    <div class="row">
+        <div v-for="product in products" :key="product.prodID" class="card col-3" style="width: 18rem;">
             <img :src="product.prodUrl" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title">{{ product.prodName }}</h5>
@@ -25,6 +25,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style  scoped>
 </style>

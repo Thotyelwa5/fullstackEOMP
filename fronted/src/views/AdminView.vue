@@ -1,5 +1,51 @@
 <template>
   <div>
+    <!-- Input section for adding users -->
+    <div>
+      <h2>Add User</h2>
+      <input v-model="newUser.firstName" placeholder="First Name" />
+      <input v-model="newUser.lastName" placeholder="Last Name" />
+      <input v-model="newUser.userAge" placeholder="Age" type="number" />
+      <input v-model="newUser.gender" placeholder="Gender" />
+      <input v-model="newUser.userRole" placeholder="Role" />
+      <input v-model="newUser.emailAdd" placeholder="Email" />
+      <input v-model="newUser.userPass" placeholder="Password" type="password" />
+      <input v-model="newUser.profileUrl" placeholder="Profile URL" />
+      <button @click="registerUser">Register User</button>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Role</th>
+          <th>Email</th>
+          <th>Profile URL</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="user in users" :key="user.userId">
+          <td>{{ user.userId }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.userAge }}</td>
+          <td>{{ user.gender }}</td>
+          <td>{{ user.userRole }}</td>
+          <td>{{ user.emailAdd }}</td>
+          <td><img :src="user.profileUrl" alt=""></td>
+          <td>
+            <button @click="editUser(user)">Edit</button>
+            <button @click="deleteUser(user.userId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
     <!-- Input section for adding products -->
     <div>
       <h2>Add Product</h2>
@@ -11,7 +57,6 @@
       <button @click="addProduct">Add Product</button>
     </div>
 
-    <!-- Table displaying existing products -->
     <table class="table">
       <thead>
         <tr>
@@ -31,7 +76,7 @@
           <td>{{ product.quantity }}</td>
           <td>{{ product.amount }}</td>
           <td>{{ product.Category }}</td>
-          <td><img :src="product.prodUrl" alt=""></td>
+          <td><img :src="product.prodUrl" alt="product"></td>
           <td>
             <button @click="editProduct(product)">Edit</button>
             <button @click="deleteProduct(product.prodID)">Delete</button>
@@ -50,6 +95,16 @@ export default {
   name: "AdminTable",
   data() {
     return {
+      newUser: {
+        firstName: "",
+        lastName: "",
+        userAge: 0,
+        gender: "",
+        userRole: "",
+        emailAdd: "",
+        userPass: "",
+        profileUrl: "",
+      },
       newProduct: {
         prodName: "",
         quantity: 0,
@@ -60,14 +115,39 @@ export default {
     };
   },
   computed: {
+    users() {
+      return this.$store.state.users
+    },
     products() {
       return this.$store.state.products;
     },
   },
   mounted() {
+    this.$store.dispatch('fetchUsers');
     this.$store.dispatch('fetchProducts');
   },
   methods: {
+    //===============REGISTER===================================
+    async register() {
+      try {
+        const response = await axios.post('https://fullstackeomp1.onrender.com/register', this.newUser);
+        alert(response.data.msg); 
+        this.newProduct = {
+          firstName: "",
+        lastName: "",
+        userAge: 0,
+        gender: "",
+        userRole: "",
+        emailAdd: "",
+        userPass: "",
+        profileUrl: "",
+        };
+        this.fetchUser();
+      } catch (error) {
+        console.error("Error adding user:", error);
+      }
+    },
+  //  =======  ADD PRODUCT================================================
     async addProduct() {
       try {
         const response = await axios.post('https://fullstackeomp1.onrender.com/add-product', this.newProduct);
@@ -84,6 +164,7 @@ export default {
         console.error("Error adding product:", error);
       }
     },
+    // ======EDIT PRODUCT===============================================
     async editProduct(product) {
   try {
     const updatedData = {
@@ -94,7 +175,7 @@ export default {
       prodUrl: product.prodUrl,
     };
     
-    const response = await axios.put(`${fullStackEOMPUrl}products/id${product.prodID}`, updatedData);
+    const response = await axios.patch(`${fullStackEOMPUrl}product/id${product.prodID}`, updatedData);
 
     if (response.status !== 200) {
       throw new Error(`Failed to edit product. Status: ${response.status}`);
@@ -111,6 +192,20 @@ export default {
     }
   }
 },
+// ==============DELETE USER==================================
+async deleteUser(userID) {
+    const confirmed = confirm("Are you sure you want to delete this user?");
+      if (confirmed) {
+        try   {
+          await this.$store.dispatch("deleteUser", userID);
+          console.log("user deleted successfully!");
+        } catch (error) {
+        console.error("Error deleting user:", error);
+        }
+      }
+      this.$router.push("/admin");
+    },
+// ================DELETE PRODUCT=======================================
     async deleteProduct(productId) {
     const confirmed = confirm("Are you sure you want to delete this product?");
       if (confirmed) {
@@ -123,6 +218,7 @@ export default {
       }
       this.$router.push("/admin");
     },
+//==================EDIT USER=======================================
     async editProduct(product) {
       try {
         const updatedData = {
@@ -192,7 +288,6 @@ export default {
   margin: 0 auto;
 }
 
-/* Style for buttons */
 .table button {
   padding: 6px 12px;
   background-color: #3490dc;
@@ -201,9 +296,11 @@ export default {
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease;
-}
-
-.table button:hover {
+}.table button:hover {
   background-color: #2779bd;
+}
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
 }
 </style>

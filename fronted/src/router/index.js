@@ -18,8 +18,8 @@ const routes = [
     component: () => import('../views/ProductsView.vue')
   },
   {
-    path: '/contact-form',
-    name: 'contact-form',
+    path: '/contact',
+    name: 'contact',
     component: () => import('../views/ContactView.vue')
   },
   {
@@ -30,7 +30,7 @@ const routes = [
   {
     path: '/product/:prodID',
     name: 'product',
-    component: () => import('../components/ProductView.vue')
+    component: () => import('../components/SingleComp.vue')
   },
 
  

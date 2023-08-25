@@ -1,5 +1,6 @@
 <template>
     <div>
+      <h2 class="us">WELCOME TO SnT KITCHENWARE</h2>
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -83,6 +84,10 @@
 
 .carousel-inner {
   max-height: 800px; /* Adjust as needed */
+}
+
+.us{
+  animate__flash
 }
   
 </style>

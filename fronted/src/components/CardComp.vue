@@ -16,8 +16,45 @@
 </template>
 
 <script>
+import SpinnerComp from '@/components/SpinnerComp.vue';
+import CardComp from '@/components/CardComp.vue';
 export default {
+  components: {
+    SpinnerComp,
+    CardComp,
+  },
     props: ["products"],
+
+    data() {
+    return {
+      searchQuery: '',        
+      selectedCategory: '',   
+    };
+  },
+  computed: {
+    products() {
+      return this.$store.state.products;
+    },
+    uniqueCategories() {
+      // Extract unique categories from products
+      return [...new Set(this.products.map(product => product.Category))];
+    },
+    filteredProducts() {
+      // Apply search and filter
+      let filtered = this.products;
+
+      if (this.searchQuery) {
+        const lowercaseQuery = this.searchQuery.toLowerCase();
+        filtered = filtered.filter(product => product.prodName.toLowerCase().includes(lowercaseQuery));
+      }
+
+      if (this.selectedCategory) {
+        filtered = filtered.filter(product => product.Category === this.selectedCategory);
+      }
+
+      return filtered;
+    },
+  },
 
     mounted() {
         console.log("Product comp", this.products);

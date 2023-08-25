@@ -2,8 +2,18 @@
   <div>
      <SpinnerComp/>
      <CardComp :products="products"/>
+     <input v-model="searchQuery" placeholder="Search products" />
+     <select v-model="selectedCategory">
+       <option value="">All categories</option>
+       <option v-for="category in uniqueCategories" :value="category" :key="category">{{ category }}</option>
+     </select>
+      <SpinnerComp/>
+      <CardComp :products="products"/>
    </div>
+
+  
  </template>
+ 
  <script>
  import SpinnerComp from '@/components/SpinnerComp.vue';
  import CardComp from '@/components/CardComp.vue'

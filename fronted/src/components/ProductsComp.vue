@@ -1,22 +1,17 @@
 <template>
- <div>
-
-    <SpinnerComp :products="products"/>
-    <CardComp :products="products"/>
+  <div>
+    <SpinnerComp :fetchedProducts="products" />
+    <CardComp :fetchedProducts="products" />
   </div>
-  <CardComp :products="products"/>
- </div>
-
-    
- 
 </template>
 
 <script>
 import SpinnerComp from '@/components/SpinnerComp.vue';
-import CardComp from '@/components/CardComp.vue'
+import CardComp from '@/components/CardComp.vue';
+
 export default {
   props: {
-    product: Object
+    product: Object,
   },
   data() {
     return {
@@ -31,9 +26,9 @@ export default {
       },
     },
   },
-  components: {SpinnerComp ,CardComp,},
-  props: {
-    products: Array,
+  components: {
+    SpinnerComp,
+    CardComp,
   },
   computed: {
     products() {
@@ -47,6 +42,5 @@ export default {
 </script>
 
 <style scoped>
-
 
 </style>

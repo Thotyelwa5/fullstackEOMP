@@ -1,12 +1,22 @@
 <template>
     <div>
-        <nav class="navbar">
-            <router-link to="/" class="nav">Home</router-link>
-            <router-link to="/about" class="nav">About</router-link>
-            <router-link to="/products" class="nav">Products</router-link>
-            <router-link to="/contact-form" class="nav">Contact</router-link>
-            <router-link to="/admin" class="nav">Admin</router-link>
-         </nav>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" >
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="https://i.postimg.cc/T1SvqWzB/Screenshot-2023-08-21-090856.png" alt="logo"  width="50" height="50" border-radius="50"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav m-auto">
+                  <router-link class="nav-link" to="/">HOME</router-link>
+                  <router-link class="nav-link" to="/about">ABOUT</router-link>
+                  <router-link class="nav-link" to="/products">PRODUCTS</router-link>
+                  <router-link class="nav-link" to="/contact">CONTACT</router-link>
+                  <router-link class="nav-link" to="/admin">ADMIN</router-link>
+                </div>
+              </div>
+            </div>
+          </nav>
     </div>
 </template>
 
@@ -18,18 +28,27 @@
 
 <style scoped>
 .navbar{
-    background-color: #F10086;
+    background-color: #F10086 !important;
     overflow: hidden;
+    
     }
-    .nav {
-    float: left;
+    .navbar-nav {
+   
     text-align: center;
-    padding: 12px 10px;
+   
     text-decoration: none;
-    font-size: 17px;
-    color: white;
+    font-size: 20px;
+    font-weight:600;
+    color: white !important;
+    padding-right: 10px;
     }
-    .nav:hover{
+    .nav-link:hover{
        background-color: #D9D9D9;
-        border-radius: 10px; }
+        border-radius: 15px; }
+
+      /*  .navbar-brand{
+            width: 5px;
+            height: 5px;
+            border-radius:5px;
+        }*/
 </style>

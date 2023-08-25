@@ -1,34 +1,46 @@
 <template>
-    <div v-if="product" class="employee-details">
-      <div class="img-container">
-        <img
-          :src="product.prodUrl"
-          :alt="product.prodName"
-          class="top-picks-img"
-        />
-      </div>
+  <div>
+     <SpinnerComp/>
+     <CardComp :products="products"/>
+   </div>
   
-      <p>{{ product.prodName }}<br />R{{ product.amount }}</p>
-      <p>{{ product.Category }}</p>
-    </div>
-    <div v-else>Error</div>
-  </template>
-  
-  <script>
-  export default {
-    computed: {
-      product() {
-        return this.$store.state.product;
-      }
-    },
+ </template>
+ 
+ <script>
+ import SpinnerComp from '@/components/SpinnerComp.vue';
+ import CardComp from '@/components/CardComp.vue'
+ export default {
+   props: {
+     product: Object
+   },
+   data() {
+     return {
+       selectedProduct: null,
+     };
+   },
+   watch: {
+     product: {
+       immediate: true,
+       handler(newVal) {
+         this.selectedProduct = newVal;
+       },
+     },
+   },
+   components: {SpinnerComp ,CardComp,},
+   props: {
+     products: Array,
+   },
+   computed: {
+     products() {
+       return this.$store.state.products;
+     },
+   },
+   mounted() {
+     this.$store.dispatch('fetchProducts');
+   },
+ };
+ </script>
+ 
+ <style scoped>
 
-    mounted() {
-      const prodID = this.$route.params.prodID;
-      this.$store.dispatch('fetchProduct', prodID);
-    },
-  };
-  </script>
-
-<style scoped>
-
-</style>
+ </style>

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
 const routes = [
   {
     path: '/',
@@ -30,15 +29,16 @@ const routes = [
   {
     path: '/product/:prodID',
     name: 'product',
-    component: () => import('../components/ProductView.vue')
+    component: () => import('../views/ProductsView.vue')
   },
-
- 
 ]
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
 export default router
+
+
+
+
+

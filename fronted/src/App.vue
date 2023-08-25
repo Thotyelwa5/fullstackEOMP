@@ -20,7 +20,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #2c3e50;
-  color:white;
+  color:white !important;
   overflow: hidden;
 }
 
@@ -31,9 +31,14 @@ nav {
 nav a {
   font-weight: bold;
   color: #2c3e50;
+  color: white !important;
+  display: inline-block;
+   /* Adjust this value to control the space */
+  text-decoration: none;
+ 
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #42b983 !important;
 }
 </style>

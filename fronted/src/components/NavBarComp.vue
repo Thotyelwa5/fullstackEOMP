@@ -30,7 +30,7 @@
 .navbar{
     background-color: #F10086 !important;
     overflow: hidden;
-    
+    color: white !important;
     }
     .navbar-nav {
    justify-content: space-between !important;

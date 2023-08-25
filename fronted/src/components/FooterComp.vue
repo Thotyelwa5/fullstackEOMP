@@ -100,5 +100,7 @@
 </script>
 
 <style scoped>
-
+.btn{
+animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s;}
 </style>

@@ -10,7 +10,7 @@
     </p>
     <div class="team">
       <h3>MEET OUR TEAM</h3>
-      <div class="row">
+      <div class="row p-5">
         <div class="col-md-6">
           <div class="card" style="width: 18rem;">
             <img src="https://i.postimg.cc/gjqst85n/986843-C0-CE05-4-BF1-900-A-2-D805-A454-D1-D-removebg-preview.jpg" class="card-img-top" alt="sisipho">
@@ -41,6 +41,12 @@
 </script>
 
 <style scoped>
+
+.row{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+ } 
 .card{
   background-color:#2c3e50 ;
   color:white;

@@ -23,30 +23,33 @@
       </div>
    
         <h2><b>FEATURED PRODUCTS</b></h2>
-        <div class="row">
-          <div class="col-md-4 p-0">
+        <div class="row p-5">
+          <div class="col-md-4 ">
             <div class="card" style="width: 18rem; background-color: #2c3e50;">
                 <img src="https://i.postimg.cc/t41tbHQm/s-l1200.webp" class="card-img-top" alt="card">
                 <div class="card-body">
-                  <h5 class="card-title" style="color:white">Card title</h5>
+                  <h5 class="card-title" style="color:white">Vancasso NAVIA Dinner Set</h5>
+                 <p style="color:white"> For only R4,200</p>
                 </div>
               </div>
             </div>
         
-          <div class="col-md-4 p-0">
+          <div class="col-md-4">
             <div class="card" style="width: 18rem;background-color: #2c3e50;">
                 <img src="https://i.postimg.cc/rmSrgGtq/s-l1600.jpg" class="card-img-top" alt="card3">
                 <div class="card-body">
-                  <h5 class="card-title" style="color:white">Card title</h5>
+                  <h5 class="card-title" style="color:white">Vancasso BUBBLE Green Dinner Set</h5>
+                  <p style="color:white"> For only R4,800</p>
                 </div>
               </div>
             </div>
       
-          <div class="col-md-4 p-0">
+          <div class="col-md-4">
             <div class="card" style="width: 18rem;background-color: #2c3e50;">
                 <img src="https://i.postimg.cc/0jwpgg31/Stone-Lain-Coupe-Stoneware-Dinnerware-Set.webp" class="card-img-top" alt="card2">
                 <div class="card-body" style="color:white">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">Stone Lain Coupe Stoneware</h5>
+                  <p style="color:white"> For only R200</p>
             </div>
           </div>
         </div>

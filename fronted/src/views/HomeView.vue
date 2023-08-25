@@ -22,11 +22,10 @@
         </button>
       </div>
    
-        <h2>FEATURED PRODUCTS</h2>
+        <h2><b>FEATURED PRODUCTS</b></h2>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 p-0">
             <div class="card" style="width: 18rem; background-color: #2c3e50;">
-             
                 <img src="https://i.postimg.cc/t41tbHQm/s-l1200.webp" class="card-img-top" alt="card">
                 <div class="card-body">
                   <h5 class="card-title" style="color:white">Card title</h5>
@@ -34,9 +33,7 @@
               </div>
             </div>
         
-
-
-          <div class="col-md-4">
+          <div class="col-md-4 p-0">
             <div class="card" style="width: 18rem;background-color: #2c3e50;">
                 <img src="https://i.postimg.cc/rmSrgGtq/s-l1600.jpg" class="card-img-top" alt="card3">
                 <div class="card-body">
@@ -44,10 +41,8 @@
                 </div>
               </div>
             </div>
-
-
       
-          <div class="col-md-4">
+          <div class="col-md-4 p-0">
             <div class="card" style="width: 18rem;background-color: #2c3e50;">
                 <img src="https://i.postimg.cc/0jwpgg31/Stone-Lain-Coupe-Stoneware-Dinnerware-Set.webp" class="card-img-top" alt="card2">
                 <div class="card-body" style="color:white">
@@ -71,11 +66,12 @@
 </script>
 
 <style scoped>
-.flex-container {
-    display:flex;
-    
-}
- 
+.row{
+ text-align: center;
+ align-items: center;
+ justify-content: center;
+} 
+
 /* Center the image horizontally */
 .carousel {
   max-width: 1100px; /* Adjust as needed */

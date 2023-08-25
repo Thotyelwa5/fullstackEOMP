@@ -2,7 +2,7 @@
     <div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" >
             <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="https://i.postimg.cc/T1SvqWzB/Screenshot-2023-08-21-090856.png" alt="logo"  width="50" height="50" border-radius="50"></a>
+              <a class="navbar-brand" href="/"><img src="https://i.postimg.cc/T1SvqWzB/Screenshot-2023-08-21-090856.png" alt="logo"  width="50" height="50" border-radius="50"></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -33,12 +33,12 @@
     
     }
     .navbar-nav {
-   
+   justify-content: space-between !important;
     text-align: center;
    
     text-decoration: none;
     font-size: 20px;
-    font-weight:600;
+    font-weight:500;
     color: white !important;
     padding-right: 10px;
     }
@@ -46,9 +46,5 @@
        background-color: #D9D9D9;
         border-radius: 15px; }
 
-      /*  .navbar-brand{
-            width: 5px;
-            height: 5px;
-            border-radius:5px;
-        }*/
+     
 </style>

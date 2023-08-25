@@ -39,9 +39,12 @@ export default createStore({
     setDeletionStatus(state, status) {
       state.deletionStatus = status;
     },
-    setdeleteUser(state, status){
-      state.deleteUser = status
-    }
+    deleteUser(state, userID) {
+      const index = state.users.findIndex(user => user.userId === userID);
+      if (index !== -1) {
+        state.users.splice(index, 1);
+      }
+    },
   },
   actions: {
     async fetchUsers(context) {
@@ -72,23 +75,47 @@ export default createStore({
         context.commit("setMsg", "An error occurred.");
       }
     },
-    async deleteUser(state, userID) {
+
+     // Action to delete a user
+     async deleteUser(context, userID) {
       try {
-        state.commit("setDeletionStatus", null);
-        
+        context.commit("setDeletionStatus", null);
+
         const response = await axios.delete(`${fullStackEOMPUrl}user/${userID}`);
-        
+
         if (response.status !== 200) {
           throw new Error(`Failed to delete user. Status: ${response.status}`);
         }
-        
-        set.commit("deleteUser", userID);
-        set.commit("setDeletionStatus", "success");
+
+        // You don't need to commit "deleteUser" mutation here
+        context.commit("setDeletionStatus", "success");
       } catch (error) {
         console.error("Error deleting user:", error);
-        set.commit("setDeletionStatus", "error");
+        context.commit("setDeletionStatus", "error");
       }
     },
+  
+  
+
+    
+    // async deleteUser(context, userID) { 
+    //   try {
+    //     context.commit("setDeletionStatus", null);
+        
+    //     const response = await axios.delete(`${fullStackEOMPUrl}user/${userID}`);
+        
+    //     if (response.status !== 200) {
+    //       throw new Error(`Failed to delete user. Status: ${response.status}`);
+    //     }
+        
+    //     context.commit("deleteUser", userID); 
+    //     context.commit("setDeletionStatus", "success"); 
+    //   } catch (error) {
+    //     console.error("Error deleting user:", error);
+    //     context.commit("setDeletionStatus", "error"); 
+    //   }
+    // },
+    
     async deleteProduct(context, prodID) {
       try {
         context.commit("setDeletionStatus", null);
@@ -106,9 +133,9 @@ export default createStore({
         context.commit("setDeletionStatus", "error");
       }
     },
-    async updateProduct(context, updatedData) {
+     updateProduct(context, updatedData) {
       try {
-        const response = await axios.patch(`${fullStackEOMPUrl}products/${updatedData.prodID}`, updatedData);
+        const response = axios.put(`${fullStackEOMPUrl}products/${updatedData.prodID}`, updatedData);
         
         if (response.status !== 200) {
           throw new Error(`Failed to update product. Status: ${response.status}`);

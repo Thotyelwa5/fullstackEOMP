@@ -86,8 +86,4 @@
   max-height: 800px; /* Adjust as needed */
 }
 
-.us{
-  animate__flash
-}
-  
 </style>

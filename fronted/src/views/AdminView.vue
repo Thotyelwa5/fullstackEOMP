@@ -159,39 +159,4 @@ async deleteUser(userID) {
 </script>
 
 <style scoped>
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.table th,
-.table td {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-/* Style for product images */
-.table img {
-  max-width: 100px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.table button {
-  padding: 6px 12px;
-  background-color: #3490dc;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}.table button:hover {
-  background-color: #2779bd;
-}
-.table-container {
-  overflow-x: auto;
-  max-width: 100%;
-}
 </style>

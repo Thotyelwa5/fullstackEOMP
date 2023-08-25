@@ -1,5 +1,10 @@
 <template>
   <div>
+    <input v-model="searchQuery" placeholder="Search products" />
+    <select v-model="selectedCategory">
+      <option value="">All categories</option>
+      <option v-for="category in uniqueCategories" :value="category" :key="category">{{ category }}</option>
+    </select>
      <SpinnerComp/>
      <CardComp :products="products"/>
    </div>
@@ -40,7 +45,7 @@
    },
  };
  </script>
- 
+
  <style scoped>
 
  </style>
